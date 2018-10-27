@@ -1,0 +1,22 @@
+plugins {
+  id 'java-library'
+}
+
+allprojects {
+  apply from: "${rootDir}/versions.gradle" 
+
+  repositories {
+    jcenter();
+  }
+
+  apply plugin: 'eclipse'
+  apply plugin: 'idea'
+}
+
+dependencies {
+  testImplementation "org.junit.jupiter:junit-jupiter-api:${versions.junitJupiter}"
+  testImplementation "org.hamcrest:hamcrest-library:${versions.hamcrest}"
+
+  testRuntimeOnly "org.junit.platform:junit-platform-launcher:${versions.junitPlatform}";
+  testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${versions.junitJupiter}";
+}

@@ -1,37 +1,43 @@
-import java.util.*;
-import java.io.*;
-import java.math.*;
+import java.io.InputStream;
+import java.io.PrintStream;
+import java.util.Scanner;
 
-/**
- * Auto-generated code below aims at helping you parse
- * the standard input according to the problem statement.
- **/
-class Player {
+public class Player {
 
-    public static void main(String args[]) {
-        Scanner in = new Scanner(System.in);
-
-        // game loop
-        while (true) {
-            int myShipCount = in.nextInt(); // the number of remaining ships
-            int entityCount = in.nextInt(); // the number of entities (e.g. ships, mines or cannonballs)
-            for (int i = 0; i < entityCount; i++) {
-                int entityId = in.nextInt();
-                String entityType = in.next();
-                int x = in.nextInt();
-                int y = in.nextInt();
-                int arg1 = in.nextInt();
-                int arg2 = in.nextInt();
-                int arg3 = in.nextInt();
-                int arg4 = in.nextInt();
-            }
-            for (int i = 0; i < myShipCount; i++) {
-
-                // Write an action using System.out.println()
-                // To debug: System.err.println("Debug messages...");
-
-                System.out.println("MOVE 11 10"); // Any valid action, such as "WAIT" or "MOVE x y"
-            }
-        }
+  private final Scanner input;
+  private final PrintStream output;
+  
+  public Player(final InputStream input, final PrintStream output) {
+    this.input = new Scanner(input);
+    this.output = output;
+  }
+  
+  public void playOneTurn() {
+    int myShipCount = this.input.nextInt(); // the number of remaining ships
+    int entityCount = this.input.nextInt(); // the number of entities (e.g. ships, mines or cannonballs)
+    for (int i = 0; i < entityCount; i++) {
+      int entityId = this.input.nextInt();
+      String entityType = this.input.next();
+      int x = this.input.nextInt();
+      int y = this.input.nextInt();
+      int arg1 = this.input.nextInt();
+      int arg2 = this.input.nextInt();
+      int arg3 = this.input.nextInt();
+      int arg4 = this.input.nextInt();
     }
+    for (int i = 0; i < myShipCount; i++) {
+
+      // Write an action using System.out.println()
+      // To debug: System.err.println("Debug messages...");
+
+      this.output.println("MOVE 11 10"); // Any valid action, such as "WAIT" or "MOVE x y"
+    }
+  }
+
+  public static void main(String args[]) {
+    Player player = new Player(System.in, System.out);
+    while (true) {
+      player.playOneTurn();
+    }
+  }
 }
