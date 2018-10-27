@@ -2,7 +2,7 @@ import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
 
-public class Player {
+class Player {
 
   private final Scanner input;
   private final PrintStream output;
